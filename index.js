@@ -21,10 +21,10 @@ class PrimusWebpackPlugin {
         : clientLib
 
       compilation.assets[filename] = {
-        source: function() {
+        source () {
           return source.code
         },
-        size: function() {
+        size () {
           return source.code.length
         }
       }
@@ -32,6 +32,7 @@ class PrimusWebpackPlugin {
       cb(null)
     })
 
+    // if HtmlWebpackPlugin is being utilized, add our script to file
     compiler.plugin('compilation', (compilation) => {
       compilation.plugin('html-webpack-plugin-before-html-processing', (htmlPluginData, cb) => {
         const filename = this.options.filename.replace('[hash]', compilation.hash)
