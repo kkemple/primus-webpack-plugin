@@ -18,7 +18,7 @@ class PrimusWebpackPlugin {
       const filename = this.options.filename.replace('[hash]', compilation.hash)
       const source = this.options.minify
         ? uglify.minify(clientLib, { fromString: true })
-        : clientLib
+        : { code: clientLib }
 
       compilation.assets[filename] = {
         source () {
