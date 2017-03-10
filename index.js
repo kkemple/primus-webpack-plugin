@@ -1,4 +1,4 @@
-const http = require('http')
+const EventEmitter = require('events')
 const Primus = require('primus')
 const uglify = require('uglify-js')
 
@@ -13,7 +13,7 @@ class PrimusWebpackPlugin {
 
   apply (compiler) {
     compiler.plugin('emit', (compilation, cb) => {
-      const primus = new Primus(http.createServer(), this.options.primusOptions)
+      const primus = new Primus(new EventEmitter(), this.options.primusOptions)
       const clientLib = primus.library()
       const filename = this.options.filename.replace('[hash]', compilation.hash)
       const source = this.options.minify
