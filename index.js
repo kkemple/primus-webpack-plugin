@@ -36,7 +36,7 @@ class PrimusWebpackPlugin {
     compiler.plugin('compilation', (compilation) => {
       compilation.plugin('html-webpack-plugin-before-html-processing', (htmlPluginData, cb) => {
         const filename = this.options.filename.replace('[hash]', compilation.hash)
-        const scriptTag = `<script type="text/javascript" src="${filename}"></script>`
+        const scriptTag = `<script type="text/javascript" src="/${filename}"></script>`
 
         if (!htmlPluginData.plugin.options.inject || htmlPluginData.plugin.options.inject === 'head') {
           htmlPluginData.html = htmlPluginData.html.replace('</head>', scriptTag + '</head>')
