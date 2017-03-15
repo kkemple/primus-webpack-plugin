@@ -1,6 +1,6 @@
 {
   "name": "primus-webpack-plugin",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "Build client side primus script and add to build assets",
   "main": "index.js",
   "scripts": {
