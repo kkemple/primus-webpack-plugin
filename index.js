@@ -9,9 +9,9 @@ class PrimusWebpackPlugin {
       {
         filename: 'primus-client.js',
         minify: false,
-        primusOptions: {},
+        primusOptions: {}
       },
-      options,
+      options
     );
   }
 
@@ -21,7 +21,7 @@ class PrimusWebpackPlugin {
       const clientLib = primus.library();
       const filename = this.options.filename.replace(
         '[hash]',
-        compilation.hash,
+        compilation.hash
       );
       const source = this.options.minify
         ? uglify.minify(clientLib, { fromString: true })
@@ -46,7 +46,7 @@ class PrimusWebpackPlugin {
         (htmlPluginData, cb) => {
           const filename = this.options.filename.replace(
             '[hash]',
-            compilation.hash,
+            compilation.hash
           );
           const scriptTag = `<script type="text/javascript" src="/${filename}"></script>`;
 
@@ -56,17 +56,17 @@ class PrimusWebpackPlugin {
           ) {
             htmlPluginData.html = htmlPluginData.html.replace(
               '</head>',
-              scriptTag + '</head>',
+              scriptTag + '</head>'
             );
           } else {
             htmlPluginData.html = htmlPluginData.html.replace(
               '</body>',
-              scriptTag + '</body>',
+              scriptTag + '</body>'
             );
           }
 
           cb(null, htmlPluginData);
-        },
+        }
       );
     });
   }
