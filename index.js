@@ -47,6 +47,7 @@ class PrimusWebpackPlugin {
         },
       };
 
+      primus.destroy();
       cb(null);
     });
 
