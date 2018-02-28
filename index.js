@@ -60,7 +60,8 @@ class PrimusWebpackPlugin {
             '[hash]',
             compilation.hash
           );
-          const scriptTag = `<script type="text/javascript" src="/${filename}"></script>`;
+          const publicPath = compilation.outputOptions.publicPath || "";
+          const scriptTag = `<script type="text/javascript" src="${publicPath}${filename}"></script>`;
 
           if (
             !htmlPluginData.plugin.options.inject ||
