@@ -1,4 +1,8 @@
-# PrimusWebpackPlugin
+# PrimusClientWebpackPlugin
+
+> This is a fork of [primus-webpack-plugin](https://github.com/kkemple/primus-webpack-plugin). It uses publicPath inside your HtmlWebpackPlugin.
+>
+> [See this issue here](https://github.com/kkemple/primus-webpack-plugin/issues/6)
 
 ### Build client side Primus script and add to build assets 📦⚡
 
@@ -13,26 +17,20 @@ This plugin allows you to pass in your Primus options and then adds the client l
 
 ## Usage
 
-Install PrimusWebpackPlugin:
+Install PrimusClientWebpackPlugin:
 
 ```shell
-npm install --save-dev primus-webpack-plugin
-```
-
-With Yarn:
-
-```shell
-yarn add -D primus-webpack-plugin
+npm install --save-dev primus-client-webpack-plugin
 ```
 
 In webpack.config.js:
 
-```shell
-const PrimusWebpackPlugin = require('primus-webpack-plugin')
+```javascript
+const PrimusClientWebpackPlugin = require('primus-client-webpack-plugin')
 
 ...
 
-new PrimusWebpackPlugin({
+new PrimusClientWebpackPlugin({
   filename: 'primus-client.[hash].js',
   minify: true,
   primusOptions: {
@@ -57,7 +55,7 @@ filename            | Name of generated file                    | `primus-client
 minify              | Whether or not to minify the file         | `false`
 primusOptions       | Options for the Primus Server             | `{}`
 
-> https://github.com/primus/primus#getting-started
+> [See primus options here](https://github.com/primus/primus#getting-started)
 
 ## Caveats
 
