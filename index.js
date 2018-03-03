@@ -54,28 +54,17 @@ class PrimusWebpackPlugin {
     // if HtmlWebpackPlugin is being utilized, add our script to file
     compiler.plugin('compilation', compilation => {
       compilation.plugin(
-        'html-webpack-plugin-before-html-processing',
+        'html-webpack-plugin-before-html-generation',
         (htmlPluginData, cb) => {
           const filename = this.options.filename.replace(
             '[hash]',
             compilation.hash
           );
-          const scriptTag = `<script type="text/javascript" src="/${filename}"></script>`;
+          const publicPath = compilation.outputOptions.publicPath || "";
 
-          if (
-            !htmlPluginData.plugin.options.inject ||
-            htmlPluginData.plugin.options.inject === 'head'
-          ) {
-            htmlPluginData.html = htmlPluginData.html.replace(
-              '</head>',
-              scriptTag + '</head>'
-            );
-          } else {
-            htmlPluginData.html = htmlPluginData.html.replace(
-              '</body>',
-              scriptTag + '</body>'
-            );
-          }
+          // We are putting Primus script before other JavaScript files
+          // because we are expecting other bundles to use Primus
+          htmlPluginData.assets.js.unshift(`${publicPath}${filename}`)
 
           cb(null, htmlPluginData);
         }

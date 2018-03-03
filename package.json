@@ -1,14 +1,12 @@
 {
-  "name": "primus-webpack-plugin",
-  "version": "0.0.37",
+  "name": "primus-client-webpack-plugin",
+  "version": "1.0.1",
   "description": "Build client side primus script and add to build assets",
   "main": "index.js",
-  "scripts": {
-    "test": "jest"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/kkemple/primus-webpack-plugin.git"
+    "url": "git+ssh://git@github.com/newyork-anthonyng/primus-webpack-plugin.git"
   },
   "keywords": [
     "webpack-plugin",
@@ -16,17 +14,17 @@
     "primus",
     "sockets"
   ],
-  "author": "kurtiskemple@gmail.com",
+  "author": "newyork.anthonyng@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kkemple/primus-webpack-plugin/issues"
+    "url": "https://github.com/newyork-anthonyng/primus-webpack-plugin/issues"
   },
-  "homepage": "https://github.com/kkemple/primus-webpack-plugin#readme",
+  "homepage": "https://github.com/newyork-anthonyng/primus-webpack-plugin#readme",
   "dependencies": {
     "uglify-js": "^2.8.7"
   },
   "peerDependencies": {
     "primus": "^6.1.0",
-    "webpack": "^2.0.0"
+    "webpack": "^3.0.0"
   }
 }
