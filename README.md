@@ -57,16 +57,6 @@ primusOptions       | Options for the Primus Server             | `{}`
 
 > [See primus options here](https://github.com/primus/primus#getting-started)
 
-## Usage with HtmlWebpackPlugin
-Depending on the [inject option](https://github.com/jantimon/html-webpack-plugin#options) provided to `HtmlWebpackPlugin`, `primus-client-webpack-plugin` exposes the `primus-client` file in different ways.
-
-`inject` | placement
------- | ---------
-true   | file is inserted at the bottom of the `<body />`, after all other assets
-"body" | file is inserted at the bottom of the `<body />`, after all other assets
-"head" | file is inserted at the bottom of the `<head />`, after all other assets
-false  | file is exposed in `htmlWebpackPlugin.files.js`, along with all other JavaScript assets
-
 ## Caveats
 
 `primus.library()` generates a UMDish style file but it doesn't seem to work being bundled with Webpack, instead a global `Primus` constructor is added. If you want to `require/import` Primus you will need to [shim](https://github.com/webpack/docs/wiki/shimming-modules#plugin-provideplugin) it in your Webpack config.

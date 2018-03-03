@@ -62,37 +62,9 @@ class PrimusWebpackPlugin {
           );
           const publicPath = compilation.outputOptions.publicPath || "";
 
-          if (!htmlPluginData.plugin.options.inject) {
-            // We are putting Primus script before other JavaScript files
-            // because we are expecting other bundles to use Primus
-            htmlPluginData.assets.js.unshift(`${publicPath}${filename}`)
-          }
-
-          cb(null, htmlPluginData);
-        }
-      );
-      
-      compilation.plugin(
-        'html-webpack-plugin-before-html-processing',
-        (htmlPluginData, cb) => {
-          const filename = this.options.filename.replace(
-            '[hash]',
-            compilation.hash
-          );
-          const publicPath = compilation.outputOptions.publicPath || "";
-          const scriptTag = `<script type="text/javascript" src="${publicPath}${filename}"></script>`;
-
-          if (htmlPluginData.plugin.options.inject === 'head') {
-            htmlPluginData.html = htmlPluginData.html.replace(
-              '</head>',
-              scriptTag + '</head>'
-            );
-          } else if (htmlPluginData.plugin.options.inject !== false) {
-            htmlPluginData.html = htmlPluginData.html.replace(
-              '</body>',
-              scriptTag + '</body>'
-            );
-          }
+          // We are putting Primus script before other JavaScript files
+          // because we are expecting other bundles to use Primus
+          htmlPluginData.assets.js.unshift(`${publicPath}${filename}`)
 
           cb(null, htmlPluginData);
         }
